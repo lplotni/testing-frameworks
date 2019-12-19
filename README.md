@@ -1,15 +1,22 @@
 # testing-jvm-frameworks
 Let's compare jvm frameworks 🎉💻
 
-The idea is pretty simple: How does the same simple service that is able to
+**The idea is pretty simple:**
+ 
+_How does the same simple service that is able to
 consume a message from a queue and expose some information via an HTTP endpoint
 looks like in different popular jvm frameworks/libs. And how do those services
-compare based on:
-* startup time
-* size of the artifact
-* memory footprint
+compare based on:_
 
-## Numbers based on following local setup
+* _startup time_
+* _size of the artifact_
+* _memory footprint_
+* _personal take on the codebase feel_
+
+## Playground domain
+Each service uses a fictional domain consuming bookings over a queue and stores it in memory providing certain statistics for those bookings over HTTP.
+
+## Local setup used to measure
 ### Local java version
 ```
  ~/repos/testing-jvm-frameworks > java --version
@@ -37,3 +44,13 @@ Endpoints:
 ```
 
 ## Micronaut-based service
+Bootsrapped using [micronaut cli](https://docs.micronaut.io/snapshot/guide/index.html#buildCLI)
+
+Endpoints:
+- http://localhost:8080/statistics
+
+### Startup time (graalvm & native-image)
+#### Only providing the endpoint
+```bash
+15:44:12.614 [main] INFO  io.micronaut.runtime.Micronaut - Startup completed in 22ms. Server Running: http://localhost:8080
+```

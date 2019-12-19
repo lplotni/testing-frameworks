@@ -23,7 +23,7 @@ class ExampleTests {
 
     @Test
     @DisplayName("should expose booking's statistic on /statistics")
-    void getAccount() throws Exception {
+    void getStatistics() throws Exception {
         this.mockMvc.perform(get("/statistics/"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
