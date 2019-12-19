@@ -19,4 +19,6 @@ Endpoints:
 
 ### Startup time
 #### Only providing the endpoint
+```bash
 2019-12-19 12:50:16.616  INFO 9235 --- [main] d.l.test.bookings.BookingsApplication    : Started BookingsApplication in 1.785 seconds (JVM running for 2.127)
+```
