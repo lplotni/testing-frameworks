@@ -1,6 +1,7 @@
 # testing-jvm-frameworks
 Let's compare jvm frameworks 🎉💻
 
+
 **The idea is pretty simple:**
  
 _How does the same simple service that is able to
@@ -54,3 +55,22 @@ Endpoints:
 ```bash
 15:44:12.614 [main] INFO  io.micronaut.runtime.Micronaut - Startup completed in 22ms. Server Running: http://localhost:8080
 ```
+
+## Quarkus-base service
+Bootsrapped using [quarkus starter](https://code.quarkus.io/)
+
+Endpoints:
+- http://localhost:8080/statistics
+
+### Startup time
+Although quarkus supports graalvm and native-images it's currently not compatilbe with java11 & graalvm (https://github.com/quarkusio/quarkus/issues/5691).
+#### Only providing the endpoint
+```bash
+<to come....>
+```
+
+
+## Resources
+- Quarkus: https://www.youtube.com/watch?v=SQDR34KoC-8
+- Micronaut: https://www.youtube.com/watch?v=RtjSqRZ_md4
+- Quarkus vs. Micronaut: https://www.youtube.com/watch?v=hnEXOqcNXPs
