@@ -2,6 +2,8 @@ const amqp = require('amqplib/callback_api');
 const randomWords = require('random-words');
 const randomInts = require('./random-ints');
 
+const amount = parseInt(process.argv[2]);
+
 amqp.connect('amqp://localhost', (error0, connection) => {
   if (error0) {
     throw error0;
@@ -30,6 +32,11 @@ amqp.connect('amqp://localhost', (error0, connection) => {
       console.log(` [${i}] Sent ${msgString}`);
     };
 
-    Array(1000).fill().map((_, i) => send(i, generateMsg()));
+    Array(amount).fill().map((_, i) => send(i, generateMsg()));
   });
+
+  setTimeout(function() {
+    connection.close();
+    process.exit(0);
+  }, 500);
 });
