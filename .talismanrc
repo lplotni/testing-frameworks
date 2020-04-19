@@ -1,5 +1,5 @@
 fileignoreconfig:
 - filename: publish-messages/package-lock.json
-  checksum: ed35f3fa91f9f1e9e9b088e7e557a24c39c149a8d237e1e13da362ea6db431aa
+  checksum: 928b5c2f6c52cc18ac5e0c9eea28f14eebc92cb6f3adf348265985162755aad1 
   ignore_detectors: []
 scopeconfig: []
