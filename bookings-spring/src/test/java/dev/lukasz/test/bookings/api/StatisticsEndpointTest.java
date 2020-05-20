@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringJUnitWebConfig(classes = BookingsApplication.class)
-class ExampleTests {
+class BookingsTest {
 
     MockMvc mockMvc;
 
