@@ -1,7 +1,7 @@
 plugins {
-	id 'org.springframework.boot' version '2.2.2.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
-	id 'java'
+    id 'org.springframework.boot' version '2.3.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
 }
 
 group = 'dev.lukasz.test'
@@ -9,17 +9,29 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '13'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
+compileJava{
+    options.fork = false
+    options.incremental = false
+}
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.postgresql:postgresql:42.2.12'
+    implementation 'org.joda:joda-money:1.0.1'
+
+    testImplementation 'com.opentable.components:otj-pg-embedded:0.13.3'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
