@@ -2,4 +2,7 @@ fileignoreconfig:
 - filename: publish-messages/package-lock.json
   checksum: 928b5c2f6c52cc18ac5e0c9eea28f14eebc92cb6f3adf348265985162755aad1 
   ignore_detectors: []
+- filename: go.sh
+  checksum: b501fc0db78962a170e89c1459486a7d46ef7a91289a7b6af960e13b18c43ff3
+  ignore_detectors: []
 scopeconfig: []

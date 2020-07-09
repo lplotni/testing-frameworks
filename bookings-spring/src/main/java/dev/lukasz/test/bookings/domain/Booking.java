@@ -32,6 +32,10 @@ public class Booking {
         this.userEmail = user;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getServiceId() {
         return serviceId;
     }
@@ -73,4 +77,6 @@ public class Booking {
                 ", user='" + userEmail + '\'' +
                 '}';
     }
+
+
 }
