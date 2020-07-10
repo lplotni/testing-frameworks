@@ -1,0 +1,19 @@
+version: '2.0'
+services:
+  bookings:
+    build: bookings-spring
+    ports: 
+    - "8080:8080"
+    links:
+    - queue
+    - db
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_DB=bookings-db
+  queue:
+    image: rabbitmq:3-management
+    ports:
+    - "8081:15672"
+    - "5672:5672"

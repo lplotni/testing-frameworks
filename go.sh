@@ -1,22 +1,19 @@
 #!/bin/sh
 set -eo pipefail
-if [ $(docker ps | grep 'rabbit') -n ]
-then
-    echo "Starting rabbitmq..."
-    container_name=$(docker run -d --hostname my-rabbit -p 8081:15672 -p 5672:5672 rabbitmq:3-management)
-    echo "Checking container: $container_name"
-    while [ "$(docker inspect -f '{{.State.Running}}' ${container_name} 2>/dev/null)" = "false" ]; do sleep 1s; done
-fi
-echo "Rabbitmq runnig"
-if [ $(docker ps | grep 'postgres') -n ]
-then
-    echo "Starting postgres..."
-    container_name=$(docker run -p 5432:5432 -e POSTGRES_PASSWORD=test -e POSTGRES_DB=bookings-db -d postgres)
-    echo "Checking container: $container_name"
-    while [ "$(docker inspect -f '{{.State.Running}}' ${container_name} 2>/dev/null)" = "false" ]; do sleep 1s; done
-fi
-echo "Postgres running"
-echo "Pushing messages"
+export status="not_active"
+GREEN='\033[1;32m'
+NC='\033[0m' # No Color
+function check {
+  echo "${GREEN}Checking...${NC}"
+  sleep 3
+  docker-compose logs queue | grep 'startup complete' \
+      && status="active" \
+      || status="not_active"
+}
+echo "${GREEN}Booting up everything...${NC}"
+docker-compose up -d 
+while [ $status == "not_active" ]; do check ; done
+echo "${GREEN}Pushing messages${NC}"
 node publish-messages/index.js $1
 
 
